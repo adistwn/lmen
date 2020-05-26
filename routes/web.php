@@ -27,8 +27,29 @@ $router->post('login', 'AuthController@checkLogin');
 | Middleware will be executed in the order you define this array:
 */
 $router->group(['middleware' => 'JwtMiddleware'], function () use ($router) {
-    
+
+    /* 
+    | Show all user data 
+    */
     $router->get('user/show', 'UserController@show');
+    /* 
+    | Create a new a user 
+    */
     $router->post('user/store', 'UserController@store');
-    // $router->get('user', 'UserController@index');
+    /* 
+    | Get data user 
+    */
+    $router->post('user/{id}/edit', 'UserController@edit');
+    /* 
+    | Update data user
+    */
+    $router->put('user/{id}/update', 'UserController@update');
+    $router->patch('user/{id}/update', 'UserController@update');
+    /* 
+    | Delete data user 
+    */
+    $router->delete('user/{id}', 'UserController@destroy');
+
+
+    
 });

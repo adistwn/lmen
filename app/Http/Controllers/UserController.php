@@ -19,12 +19,23 @@ class UserController extends Controller
         // show your magic here
     }
 
+    /**
+     * Show all data users
+     *
+     * @return void
+     */
     public function show()
     {
         $data = User::all();
         return response()->json($data);
     }
 
+    /**
+     * Create a new user account
+     *
+     * @param Request $request
+     * @return void
+     */
     public function store(Request $request)
     {
         $username = $request->post('username');
@@ -58,5 +69,47 @@ class UserController extends Controller
             ];
         }
         return response()->json($response);
+    }
+
+    /**
+     * Show data for editing
+     *
+     * @url /user/{id}/edit
+     * 
+     * @param Request $request
+     * @return void
+     */
+    public function edit(Request $request)
+    {
+        $id = $request->id;
+
+    }
+
+    /**
+     * Update data user
+     *
+     * @method PUT | PATCH
+     * 
+     * @param Request $request
+     * @return void
+     */
+    public function update(Request $request)
+    {
+        $id = $request->id;
+        
+    }
+
+    /**
+     * Delete data user
+     *
+     * @method DELETE
+     * 
+     * @param Request $request
+     * @return void
+     */
+    public function destroy(Request $request)
+    {
+        $id = $request->id;
+
     }
 }
